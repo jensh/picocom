@@ -1587,12 +1587,11 @@ main(int argc, char *argv[])
 		term_erase(tty_fd);
 	}
 
-	if ( sig_exit )
+	if ( sig_exit ) {
 		fd_printf(STO, "Picocom was killed\r\n");
-	else
-		fd_printf(STO, "Thanks for using picocom\r\n");
-	/* wait a bit for output to drain */
-	sleep(1);
+		/* wait a bit for output to drain */
+		sleep(1);
+	}
 
 #ifdef UUCP_LOCK_DIR
 	uucp_unlock();
