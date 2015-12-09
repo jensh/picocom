@@ -1581,6 +1581,8 @@ main(int argc, char *argv[])
 	cleanup_history();
 #endif
 
+	term_remove(STI); // no call to tcflush(STI, TCIOFLUSH) in term_exitfunc() which trash the final output.
+
 	fd_printf(STO, "\r\n");
 	if ( opts.noreset ) {
 		fd_printf(STO, "Skipping tty reset...\r\n");
